@@ -21,6 +21,7 @@ export const LoginUser = async (payload) => {
 };
 
 // get current user
+// no payload because only authorization has headers
 export const GetCurrentUser = async () => {
   try {
     const response = await axiosInstance.get('/api/users/get-current-user');
