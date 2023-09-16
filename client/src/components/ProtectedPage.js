@@ -13,9 +13,11 @@ function ProtectedPage({ children }) {
       if (response.success) {
         setUser(response.data);
       } else {
+        navigate('/login');
         message.error(response.message);
       }
     } catch (error) {
+      navigate('/login');
       message.error(error.message);
     }
   };
@@ -24,7 +26,7 @@ function ProtectedPage({ children }) {
     if (localStorage.getItem('token')) {
       validateToken();
     } else {
-      message.error('Please login to continue');
+      navigate('/login');
     }
   }, []);
 
