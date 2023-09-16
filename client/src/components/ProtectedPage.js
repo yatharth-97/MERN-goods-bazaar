@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 function ProtectedPage() {
   const [user, setUser] = useState(null);
-  const validateToken = async () => {};
+
+  const validateToken = async () => {
+    //
+  };
 
   useEffect(() => {
     validateToken();
