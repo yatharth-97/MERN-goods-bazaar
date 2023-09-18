@@ -31,14 +31,15 @@ function ProtectedPage({ children }) {
   }, []);
 
   return (
-    <div>
-      {user && (
-        <div className='p-5'>
-          {user.name}
-          {children}
-        </div>
-      )}
-    </div>
+    user && (
+      <div>
+        {/* header */}
+        <div className='flex justify-between items-center bg-primary p-5'></div>
+
+        {/* body */}
+        <div className='p-5'>{children}</div>
+      </div>
+    )
   );
 }
 
