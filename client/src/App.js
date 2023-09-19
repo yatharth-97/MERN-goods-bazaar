@@ -3,10 +3,12 @@ import Register from './pages/Register';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ProtectedPage from './components/ProtectedPage';
+import Spinner from './components/Spinner';
 
 function App() {
   return (
     <div>
+      <Spinner />
       <Router>
         <Routes>
           <Route
