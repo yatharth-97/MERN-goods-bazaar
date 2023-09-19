@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { message } from 'antd';
 import { GetCurrentUser } from '../apicalls/users';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { SetLoader } from '../redux/loadersSlice';
+import { SetUser } from '../redux/usersSlice';
 
 function ProtectedPage({ children }) {
-  const [user, setUser] = useState(null);
+  const { user } = useSelector((store) => store.users);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -16,7 +17,7 @@ function ProtectedPage({ children }) {
       const response = await GetCurrentUser();
       dispatch(SetLoader(false));
       if (response.success) {
-        setUser(response.data);
+        dispatch(SetUser(response.data));
       } else {
         navigate('/login');
         message.error(response.message);
