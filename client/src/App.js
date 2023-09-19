@@ -4,8 +4,10 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import ProtectedPage from './components/ProtectedPage';
 import Spinner from './components/Spinner';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const { loading } = useSelector((state) => state.loaders);
   return (
     <div>
       <Spinner />
