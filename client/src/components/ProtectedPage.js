@@ -7,7 +7,7 @@ import { SetLoader } from '../redux/loadersSlice';
 import { SetUser } from '../redux/usersSlice';
 
 function ProtectedPage({ children }) {
-  const { user } = useSelector((store) => store.users);
+  const { user } = useSelector((state) => state.users);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
