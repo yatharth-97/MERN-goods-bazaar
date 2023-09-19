@@ -10,7 +10,7 @@ function App() {
   const { loading } = useSelector((state) => state.loaders);
   return (
     <div>
-      <Spinner />
+      {loading && <Spinner />}
       <Router>
         <Routes>
           <Route
