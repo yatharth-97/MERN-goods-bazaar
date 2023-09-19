@@ -20,6 +20,7 @@ const Login = () => {
     try {
       dispatch(SetLoader(true));
       const response = await LoginUser(values);
+      dispatch(SetLoader(false));
       if (response.success) {
         message.success(response.message);
         localStorage.setItem('token', response.data);
@@ -28,6 +29,7 @@ const Login = () => {
         throw new Error(response.message);
       }
     } catch (error) {
+      dispatch(SetLoader(false));
       message.error(error.message);
     }
   };
