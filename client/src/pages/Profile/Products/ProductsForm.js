@@ -1,12 +1,13 @@
 import { Modal } from 'antd';
 import React from 'react';
 
-function ProductsForm({ showProductsForm, setShowProductsForm }) {
+function ProductsForm({ showProductForm, setShowProductForm }) {
   return (
     <Modal
       title=''
-      open={showProductsForm}
-      onCancel={() => setShowProductsForm(false)}
+      open={showProductForm}
+      onCancel={() => setShowProductForm(false)}
+      centered
     >
       <h1>Products Form</h1>
     </Modal>
