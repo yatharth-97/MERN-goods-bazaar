@@ -1,4 +1,5 @@
 import { Form, Input, Modal, Tabs } from 'antd';
+import TextArea from 'antd/es/input/TextArea';
 import React from 'react';
 
 function ProductsForm({ showProductForm, setShowProductForm }) {
@@ -15,6 +16,9 @@ function ProductsForm({ showProductForm, setShowProductForm }) {
           <Form layout='vertical'>
             <Form.Item label='Name' name='name'>
               <Input type='text' />
+            </Form.Item>
+            <Form.Item label='Description' name='name'>
+              <TextArea type='text' />
             </Form.Item>
           </Form>
         </Tabs.TabPane>
