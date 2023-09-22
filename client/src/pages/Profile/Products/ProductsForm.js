@@ -1,4 +1,4 @@
-import { Form, Input, Modal, Tabs } from 'antd';
+import { Col, Form, Input, Modal, Row, Tabs } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import React from 'react';
 
@@ -17,9 +17,31 @@ function ProductsForm({ showProductForm, setShowProductForm }) {
             <Form.Item label='Name' name='name'>
               <Input type='text' />
             </Form.Item>
-            <Form.Item label='Description' name='name'>
+            <Form.Item label='Description' name='description'>
               <TextArea type='text' />
             </Form.Item>
+            <Row>
+              <Col span={8}>
+                <Form.Item label='Price' name='price'>
+                  <Input type='number' />
+                </Form.Item>
+              </Col>
+              <Col span={8}>
+                <Form.Item label='Category' name='category'>
+                  <select>
+                    <option value='electronics'>Electronics</option>
+                    <option value='fashion'>Fashion</option>
+                    <option value='home'>Home</option>
+                    <option value='sports'>Sports</option>
+                  </select>
+                </Form.Item>
+              </Col>
+              <Col span={8}>
+                <Form.Item label='Age' name='age'>
+                  <Input type='number' />
+                </Form.Item>
+              </Col>
+            </Row>
           </Form>
         </Tabs.TabPane>
         <Tabs.TabPane tab='Images' key='2'>
