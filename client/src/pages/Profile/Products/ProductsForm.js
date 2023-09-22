@@ -20,7 +20,7 @@ function ProductsForm({ showProductForm, setShowProductForm }) {
             <Form.Item label='Description' name='description'>
               <TextArea type='text' />
             </Form.Item>
-            <Row>
+            <Row gutter={[16, 16]}>
               <Col span={8}>
                 <Form.Item label='Price' name='price'>
                   <Input type='number' />
