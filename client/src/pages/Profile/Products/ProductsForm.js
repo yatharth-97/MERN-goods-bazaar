@@ -1,4 +1,4 @@
-import { Modal } from 'antd';
+import { Modal, Tabs } from 'antd';
 import React from 'react';
 
 function ProductsForm({ showProductForm, setShowProductForm }) {
@@ -8,8 +8,16 @@ function ProductsForm({ showProductForm, setShowProductForm }) {
       open={showProductForm}
       onCancel={() => setShowProductForm(false)}
       centered
+      width={1000}
     >
-      <h1>Products Form</h1>
+      <Tabs defaultActiveKey='1'>
+        <Tabs.TabPane tab='General' key='1'>
+          <h1>General</h1>
+        </Tabs.TabPane>
+        <Tabs.TabPane tab='Images' key='2'>
+          <h1>Images</h1>
+        </Tabs.TabPane>
+      </Tabs>
     </Modal>
   );
 }
