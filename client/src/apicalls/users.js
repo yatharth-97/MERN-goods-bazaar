@@ -27,6 +27,7 @@ export const GetCurrentUser = async () => {
     const response = await axiosInstance.get('/api/users/get-current-user');
     return response.data;
   } catch (error) {
+    localStorage.removeItem('token'); // otherwise jwt expired error will pop up whenever someone logs in
     return error.message;
   }
 };
