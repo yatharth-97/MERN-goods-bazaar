@@ -7,6 +7,25 @@ const additionalThings = [
     label: 'Bill Available',
     name: 'billAvailable',
   },
+  {
+    label: 'Warranty Available',
+    name: 'warrantyAvailable',
+  },
+  {
+    label: 'Accessories Available',
+    name: 'accessoriesAvailable',
+  },
+  {
+    label: 'Box Available',
+    name: 'boxAvailable',
+  },
+];
+
+const rules = [
+  {
+    required: true,
+    message: 'Required',
+  },
 ];
 
 function ProductsForm({ showProductForm, setShowProductForm }) {
@@ -21,20 +40,20 @@ function ProductsForm({ showProductForm, setShowProductForm }) {
       <Tabs defaultActiveKey='1'>
         <Tabs.TabPane tab='General' key='1'>
           <Form layout='vertical'>
-            <Form.Item label='Name' name='name'>
+            <Form.Item label='Name' name='name' rules={rules}>
               <Input type='text' />
             </Form.Item>
-            <Form.Item label='Description' name='description'>
+            <Form.Item label='Description' name='description' rules={rules}>
               <TextArea type='text' />
             </Form.Item>
             <Row gutter={[16, 16]}>
               <Col span={8}>
-                <Form.Item label='Price' name='price'>
+                <Form.Item label='Price' name='price' rules={rules}>
                   <Input type='number' />
                 </Form.Item>
               </Col>
               <Col span={8}>
-                <Form.Item label='Category' name='category'>
+                <Form.Item label='Category' name='category' rules={rules}>
                   <select>
                     <option value='electronics'>Electronics</option>
                     <option value='fashion'>Fashion</option>
@@ -44,11 +63,21 @@ function ProductsForm({ showProductForm, setShowProductForm }) {
                 </Form.Item>
               </Col>
               <Col span={8}>
-                <Form.Item label='Age' name='age'>
+                <Form.Item label='Age' name='age' rules={rules}>
                   <Input type='number' />
                 </Form.Item>
               </Col>
             </Row>
+
+            <div className='flex gap-10'>
+              {additionalThings.map((item) => {
+                return (
+                  <Form.Item label={item.label} name={item.name}>
+                    <Input type='checkbox' />
+                  </Form.Item>
+                );
+              })}
+            </div>
           </Form>
         </Tabs.TabPane>
         <Tabs.TabPane tab='Images' key='2'>
