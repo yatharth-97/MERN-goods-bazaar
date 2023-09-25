@@ -2,6 +2,13 @@ import { Col, Form, Input, Modal, Row, Tabs } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import React from 'react';
 
+const additionalThings = [
+  {
+    label: 'Bill Available',
+    name: 'billAvailable',
+  },
+];
+
 function ProductsForm({ showProductForm, setShowProductForm }) {
   return (
     <Modal
