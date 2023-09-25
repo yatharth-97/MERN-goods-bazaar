@@ -1,6 +1,6 @@
 import { Col, Form, Input, Modal, Row, Tabs } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
-import React from 'react';
+import React, { useRef } from 'react';
 
 const additionalThings = [
   {
@@ -29,6 +29,11 @@ const rules = [
 ];
 
 function ProductsForm({ showProductForm, setShowProductForm }) {
+  const onFinish = (values) => {
+    console.log(values);
+  };
+  const formRef = useRef(null);
+
   return (
     <Modal
       title=''
@@ -36,10 +41,14 @@ function ProductsForm({ showProductForm, setShowProductForm }) {
       onCancel={() => setShowProductForm(false)}
       centered
       width={1000}
+      okText='Save'
+      onOk={() => {
+        formRef.current.submit();
+      }}
     >
       <Tabs defaultActiveKey='1'>
         <Tabs.TabPane tab='General' key='1'>
-          <Form layout='vertical'>
+          <Form layout='vertical' ref={formRef} onFinish={onFinish}>
             <Form.Item label='Name' name='name' rules={rules}>
               <Input type='text' />
             </Form.Item>
