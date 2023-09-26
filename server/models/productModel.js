@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema(
+const productsSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -52,6 +52,13 @@ const productSchema = new mongoose.Schema(
       ref: 'users',
       required: true,
     },
+    status: {
+      type: String,
+      default: 'pending',
+      required: true,
+    },
   },
   { timestamps: true }
 );
+
+module.exports = mongoose.model('products', productsSchema);
