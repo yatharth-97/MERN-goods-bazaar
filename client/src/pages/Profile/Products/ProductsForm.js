@@ -64,6 +64,7 @@ function ProductsForm({ showProductForm, setShowProductForm }) {
               <Col span={8}>
                 <Form.Item label='Category' name='category' rules={rules}>
                   <select>
+                    <option value=''>Select</option>
                     <option value='electronics'>Electronics</option>
                     <option value='fashion'>Fashion</option>
                     <option value='home'>Home</option>
@@ -82,7 +83,16 @@ function ProductsForm({ showProductForm, setShowProductForm }) {
               {additionalThings.map((item) => {
                 return (
                   <Form.Item label={item.label} name={item.name}>
-                    <Input type='checkbox' />
+                    <Input
+                      type='checkbox'
+                      value={item.name}
+                      onChange={(e) => {
+                        formRef.current.setFieldsValue({
+                          [item.name]: e.target.checked, //* using dynamic object keys
+                        });
+                      }}
+                      checked={formRef.current?.getFieldValue(item.name)}
+                    />
                   </Form.Item>
                 );
               })}
