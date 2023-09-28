@@ -18,3 +18,21 @@ router.post('/add-product', authMiddleware, async (req, res) => {
     });
   }
 });
+
+// get all products
+router.get('products', async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.send({
+      success: true,
+      products,
+    });
+  } catch (error) {
+    res.send({
+      success: false,
+      message: error.message,
+    });
+  }
+});
+
+module.exports = router;
