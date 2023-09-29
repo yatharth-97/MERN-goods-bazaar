@@ -2,6 +2,8 @@ import { Col, Form, Input, Modal, Row, Tabs, message } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { AddProduct } from '../../../apicalls/products';
+import { setLoader } from '../../../redux/loadersSlice';
 
 const additionalThings = [
   {
@@ -35,7 +37,15 @@ function ProductsForm({ showProductForm, setShowProductForm }) {
     try {
       dispatch(setLoader(true));
       const response = await AddProduct(values);
+      dispatch(setLoader(false));
+      if (response.success) {
+        message.success(response.message);
+        setShowProductForm(false);
+      } else {
+        message.error(response.message);
+      }
     } catch (error) {
+      dispatch(setLoader(false));
       message.error(error.message);
     }
   };
