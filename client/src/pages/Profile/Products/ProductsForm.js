@@ -1,6 +1,7 @@
-import { Col, Form, Input, Modal, Row, Tabs } from 'antd';
+import { Col, Form, Input, Modal, Row, Tabs, message } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
 
 const additionalThings = [
   {
@@ -29,8 +30,14 @@ const rules = [
 ];
 
 function ProductsForm({ showProductForm, setShowProductForm }) {
-  const onFinish = (values) => {
-    console.log(values);
+  const dispatch = useDispatch();
+  const onFinish = async (values) => {
+    try {
+      dispatch(setLoader(true));
+      const response = await AddProduct(values);
+    } catch (error) {
+      message.error(error.message);
+    }
   };
   const formRef = useRef(null);
 
