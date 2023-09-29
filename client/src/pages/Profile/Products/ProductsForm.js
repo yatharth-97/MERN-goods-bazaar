@@ -1,7 +1,7 @@
 import { Col, Form, Input, Modal, Row, Tabs, message } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import React, { useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AddProduct } from '../../../apicalls/products';
 import { setLoader } from '../../../redux/loadersSlice';
 
@@ -33,8 +33,11 @@ const rules = [
 
 function ProductsForm({ showProductForm, setShowProductForm }) {
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.users);
   const onFinish = async (values) => {
     try {
+      values.seller = user._id;
+      values.status = 'pending';
       dispatch(setLoader(true));
       const response = await AddProduct(values);
       dispatch(setLoader(false));
