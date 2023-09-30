@@ -3,7 +3,7 @@ import TextArea from 'antd/es/input/TextArea';
 import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AddProduct } from '../../../apicalls/products';
-import { setLoader } from '../../../redux/loadersSlice';
+import { SetLoader } from '../../../redux/loadersSlice';
 
 const additionalThings = [
   {
@@ -38,9 +38,9 @@ function ProductsForm({ showProductForm, setShowProductForm }) {
     try {
       values.seller = user._id;
       values.status = 'pending';
-      dispatch(setLoader(true));
+      dispatch(SetLoader(true));
       const response = await AddProduct(values);
-      dispatch(setLoader(false));
+      dispatch(SetLoader(false));
       if (response.success) {
         message.success(response.message);
         setShowProductForm(false);
@@ -48,7 +48,7 @@ function ProductsForm({ showProductForm, setShowProductForm }) {
         message.error(response.message);
       }
     } catch (error) {
-      dispatch(setLoader(false));
+      dispatch(SetLoader(false));
       message.error(error.message);
     }
   };
