@@ -34,6 +34,7 @@ const rules = [
 function ProductsForm({ showProductForm, setShowProductForm }) {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.users);
+
   const onFinish = async (values) => {
     try {
       values.seller = user._id;
