@@ -109,7 +109,7 @@ function ProductsForm({ showProductForm, setShowProductForm }) {
                       value={item.name}
                       onChange={(e) => {
                         formRef.current.setFieldsValue({
-                          [item.name]: e.target.checked, //* using dynamic object keys
+                          [item.name]: e.target.checked,
                         });
                       }}
                       checked={formRef.current?.getFieldValue(item.name)}
