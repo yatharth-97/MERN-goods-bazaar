@@ -4,6 +4,38 @@ import ProductsForm from './ProductsForm';
 
 function Products() {
   const [showProductForm, setShowProductForm] = useState(false);
+
+  const columns = [
+    {
+      title: 'Name',
+      dataIndex: 'name',
+    },
+    {
+      title: 'Description',
+      dataIndex: 'description',
+    },
+    {
+      title: 'Price',
+      dataIndex: 'price',
+    },
+    {
+      title: 'Category',
+      dataIndex: 'category',
+    },
+    {
+      title: 'Age',
+      dataIndex: 'age',
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+    },
+    {
+      title: 'Action',
+      dataIndex: 'action',
+    },
+  ];
+
   return (
     <div>
       <div className='flex justify-end'>
