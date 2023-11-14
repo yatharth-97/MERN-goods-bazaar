@@ -1,9 +1,11 @@
 import { Button } from 'antd';
 import React, { useState } from 'react';
 import ProductsForm from './ProductsForm';
+import { useDispatch } from 'react-redux';
 
 function Products() {
   const [showProductForm, setShowProductForm] = useState(false);
+  const dispatch = useDispatch();
 
   const columns = [
     {
