@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 function Products() {
   const [showProductForm, setShowProductForm] = useState(false);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const columns = [
     {
